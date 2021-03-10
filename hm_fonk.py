@@ -1,6 +1,10 @@
 def giris_ekrani():
-    print("Hangi islemi yapacaksiniz?")
-    print("1-Toplama\n2-Cikarma\n3-Carpma\n4-Bolme\nCıkış için Ç/ç\n")
+    print("Hangi islemi yapacaksiniz?\n")
+    i = 1
+    for fonksiyon in fonksiyonlar:
+        print(i,"--->",fonksiyon)
+        i += 1
+    print("\nÇıkmak için Ç/ç\n")
 def veri_girisi():
     sayilar = []
     while True:
@@ -34,29 +38,26 @@ def bolme(sayilar):
 def k_secim():
     k_secim = input("Seçiminizi giriniz : ")
     return k_secim
-while True:
-    giris_ekrani()
-    
-    secim = k_secim()
-    if secim == "Ç" or secim == "ç":
-        print("işleminiz bitti.")
-        break
-    if secim != "1" and secim != "2" and secim != "3" and secim != "4":
-        #if not (secim=="1" or secim == "2" or secim == "3" or secim == "4"):
-        print("yanlis giris")
-        continue
-    
-    sayilar=veri_girisi()
-    print(sayilar)
-    
-    if secim == '1':
-        toplama(sayilar)
-    elif secim == '2':
-        cikarma(sayilar)
-    elif secim == '3':
-        carpma(sayilar)
-    elif secim == '4':
-        bolme(sayilar)
-    
-  
+def ana_program():
+    while True:
+        giris_ekrani()
+        
+        secim = k_secim()
+        if secim in bitis:
+            print("işleminiz bitti.")
+            break
+        if secim not in islemler.keys():
+            
+            print("yanlis giris")
+            continue
+        
+        sayilar=veri_girisi()
+        print(sayilar)
+        if secim in islemler.keys():
+            islemler[secim](sayilar)
+
+islemler = {"1":toplama,"2":cikarma,"3":carpma,"4":bolme}
+fonksiyonlar = ["Toplama","Cikarma","Carpma","Bolme"]
+bitis = {"Ç","ç"}
+ana_program()  
     
