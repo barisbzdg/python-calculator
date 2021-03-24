@@ -1,17 +1,17 @@
 def giris_ekrani():
-    print("Hangi islemi yapacaksiniz?\n")
+    print("Select operation.\n")
     i = 1
     for secenek in secenekler:
         print(i,"--->",secenek)
         i += 1
-    print("\nÇıkmak için Ç/ç\n")
+    print("\nTo Exit Press E/e\n")
 
 def veri_girisi():
     sayilar = []
     while True:
-        sayi = input("Sayiyi girin (Çıkmak için Ç/ç) : ")
+        sayi = input("Enter a Number (To Exit Press E/e) : ")
 
-        if sayi == "Ç" or sayi == "ç":
+        if sayi == "E" or sayi == "e":
             break
         sayi = int(sayi)
         sayilar.append(sayi)
@@ -21,28 +21,28 @@ def toplama(sayilar):
     toplam = sayilar[0]
     for index in range(1,len(sayilar)):
         toplam = toplam + sayilar[index]
-    print(f"Toplama sonucu : {toplam}\n")
+    print(f"Result : {toplam}\n")
 
 def cikarma(sayilar):
     cikarma = sayilar[0]
     for index in range(1,len(sayilar)):
         cikarma = cikarma - sayilar[index]
-    print(f"Cikarma sonucu : {cikarma}\n")
+    print(f"Result  : {cikarma}\n")
 
 def carpma(sayilar):
     carpma = sayilar[0]
     for index in range(1,len(sayilar)):
         carpma = carpma * sayilar[index]
-    print(f"Carpma sonucu : {carpma}\n")
+    print(f"Result : {carpma}\n")
 
 def bolme(sayilar):
     bolme = sayilar[0]
     for index in range(1,len(sayilar)):
         bolme = bolme / sayilar[index]
-    print(f"Bolme sonucu : {bolme}\n")
+    print(f"Result : {bolme}\n")
 
 def k_secim():
-    k_secim = input("Seçiminizi giriniz : ")
+    k_secim = input("Enter Choice : ")
     return k_secim
 
 def ana_program():
@@ -51,11 +51,11 @@ def ana_program():
         
         secim = k_secim()
         if secim in bitis:
-            print("işleminiz bitti.")
+            print("Calculated.")
             break
         if secim not in islemler.keys():
             
-            print("yanlis giris")
+            print("Invalid Input.")
             continue
         
         sayilar=veri_girisi()
@@ -64,7 +64,7 @@ def ana_program():
             islemler[secim](sayilar)
 
 islemler = {"1":toplama,"2":cikarma,"3":carpma,"4":bolme}
-secenekler = ["Toplama","Cikarma","Carpma","Bolme"]
-bitis = {"Ç","ç"}
+secenekler = ["Add","Subtract","Multiply","Divide"]
+bitis = {"E","e"}
 ana_program()  
     
